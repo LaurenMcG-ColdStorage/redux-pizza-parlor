@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router } from 'react-router-dom/cjs/react-router-dom.min';
+import PizzaList from '../PizzaList/PizzaList';
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
+      <PizzaList />
+
     </div>
   );
 }
