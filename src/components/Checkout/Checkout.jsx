@@ -25,8 +25,10 @@ function checkout() {
           <th>Name</th>
           <th>Cost</th>
         </tr>
-        <tr>useSelector Pizza</tr>
-        <tr>useSelector Cost</tr>
+        <tr>
+          <td>useSelector Pizza</td>
+          <td>useSelector Cost</td>
+        </tr>
       </table>
       <div>
         <p>Total: Numbers</p> <hr />
