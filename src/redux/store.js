@@ -3,6 +3,9 @@ import logger from 'redux-logger';
 
 // Be sure to replace this reducer! 🙂        -- Changes made
 const cart = (state = [], action) => {
+  if(action.type === 'ADDINGTOCART') {
+    return [...state, action.payload];
+  }
   return state;
 };
 

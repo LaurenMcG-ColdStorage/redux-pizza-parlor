@@ -12,9 +12,13 @@ function App() {
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
   
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
-      <PizzaList />
+      {/* <img src='images/pizza_photo.png' />
+      <p>Pizza is great.</p> */}
+      <Router>
+        <Router path="/selectpizza" exact>
+          <PizzaList />
+        </Router>
+      </Router>
 
     </div>
   );

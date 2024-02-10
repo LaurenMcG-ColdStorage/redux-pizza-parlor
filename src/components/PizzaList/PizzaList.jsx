@@ -2,8 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
+import PizzaItem from '../PizzaItem/PizzaItem';
+
 function PizzaList() {
     const [PizzaLists, setPizzaLists] = useState([]);
+
+    //Make Pizza List Global not local.
+    //const pizzaList = useSelector((store) => store.pizzaList);
+
     const fetchPizzas = () => {
         //Axios GET Call
         return axios.get('/api/pizza');
@@ -31,9 +37,15 @@ function PizzaList() {
     }, []);    
     return (
         <div>
-            {PizzaLists.map((pizza) => {
-                return <p key={pizza.id}>{pizza.name}</p>
-            })}
+          <header>
+            <h2>Prime Pizza</h2>
+          </header>
+
+          <h4>SELECT YOUR PIZZA:</h4>
+          {PizzaLists.map((pizza) => {
+              return <PizzaItem key={pizza.id} pizza={pizza}/>
+            })
+          }
         </div>
     )
 }
