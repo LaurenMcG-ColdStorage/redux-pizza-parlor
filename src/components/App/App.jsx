@@ -5,6 +5,7 @@ import { HashRouter as Router, Route } from 'react-router-dom/cjs/react-router-d
 
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import PizzaList from '../PizzaList/PizzaList';
+import Checkout from '../Checkout/Checkout'
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path="/selectpizza" exact>
         <PizzaList />
+      </Route>
+      <Route path='/checkout'>
+        <Checkout />
       </Route>
      </Router>
     </div>

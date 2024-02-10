@@ -14,13 +14,16 @@ function CustomerInfo(){
 
     const handleInfo = (event) => {
         const action = {
+            type: 'ADD_CUSTOMER',
+            payload:{
             name: name,
             address: address,
             city: city,
             zip: zip
+            }
         };
         dispatch(action);
-        //history.push('/checkout');
+        history.push('/checkout');
      }
 
     return(
