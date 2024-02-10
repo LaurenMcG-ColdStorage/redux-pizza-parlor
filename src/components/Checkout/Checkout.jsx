@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import axios from 'axios';
 
 function checkout() {
   const personInfo = useSelector((state) => state.customer);
@@ -12,23 +14,27 @@ function checkout() {
     <div>
       <div>
         <p>
-          Person name <hr />
-          Person address <hr />
-          Person city <hr />
+          Person name <br />
+          Person address <br />
+          Person city <br />
         </p>
       </div>
       <div>
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Cost</th>
-        </tr>
-        <tr>
-          <td>useSelector Pizza</td>
-          <td>useSelector Cost</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>useSelector Pizza</td>
+            <td>useSelector Cost</td>
+          </tr>
+        </tbody>
       </table>
       <div>
         <p>Total: Numbers</p> <hr />
