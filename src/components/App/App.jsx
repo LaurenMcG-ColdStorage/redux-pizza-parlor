@@ -4,6 +4,7 @@ import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom/cjs/react-router-dom.min';
 
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
+import PizzaList from '../PizzaList/PizzaList';
 
 function App() {
 
@@ -19,7 +20,10 @@ function App() {
       <Route path='/custinfo'>
         <CustomerInfo />
       </Route>
-    </Router>
+      <Route path="/selectpizza" exact>
+        <PizzaList />
+      </Route>
+     </Router>
     </div>
   );
 }
