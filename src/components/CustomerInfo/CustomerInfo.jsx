@@ -12,7 +12,7 @@ function CustomerInfo(){
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleInfo = () => {
+    const handleInfo = (event) => {
         const action = {
             name: name,
             address: address,
@@ -20,20 +20,22 @@ function CustomerInfo(){
             zip: zip
         };
         dispatch(action);
-        history.push('/checkout');
+        //history.push('/checkout');
      }
 
     return(
-        <div>
+        <>
             <h2>Step Two: Customer Information</h2>
-            <input type='text' placeholder="name" onChange={setName} required></input>
-            <input type='text' placeholder="street address" onChange={setAddress} required></input>
-            <input type='text' placeholder="city" onChange={setCity} required></input>
-            <input type='number' placeholder="ZIP" onChange={setZip} required></input>
-            <input type='radio' name='servedType' value='pickup'>Pick Up</input> 
-            <input type='radio' name='servedType' value='delivery'>Delivery</input>
-            <input type='button' onClick={handleInfo}>Next</input>
-        </div>
+            <input type='text' placeholder="name" onChange={setName} required></input><br />
+            <input type='text' placeholder="street address" onChange={setAddress} required></input><br />
+            <input type='text' placeholder="city" onChange={setCity} required></input><br />
+            <input type='number' placeholder="ZIP" onChange={setZip} required></input><br />
+            <input type='radio' name='servedType' id='pickup 'value='pickup'></input>
+            <label for='pickup'>Pick Up</label><br />
+            <input type='radio' name='servedType' value='delivery'></input>
+            <label for='delivery'>Delivery</label><br />
+            <button onClick={(event) => handleInfo(event)}>Next</button>
+        </>
     )
 }
 
