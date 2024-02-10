@@ -21,25 +21,26 @@ function checkout() {
   const [orderType, setOrderType] = useState('');
   const [total, setTotal] = useState(0);
 
-  setName('');
-  setAddress('');
-  setCity('');
-  setZip('');
+  setName(personInfo.name);
+  setAddress(personInfo.address);
+  setCity(personInfo.city);
+  setZip(personInfo.zip);
   setOrderType('');
   setTotal('');
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
-    history.push('/');
+    history.push('/pizzaList');
   };
 
   return (
     <div>
       <div>
         <p>
-          Person name <hr />
-          Person address <hr />
-          Person city <hr />
+          {name} <hr />
+          {address} <hr />
+          {city} <hr />
+          {zip}
         </p>
       </div>
       <div>
