@@ -10,8 +10,8 @@ function checkout() {
   const customerAddress = useSelector((state) => state.customer.address);
   const customerCity = useSelector((state) => state.customer.city);
   const customerZip = useSelector((state) => state.customer.zip);
-  const orderType = useSelector((state) => state.cart);
-  const orderTotal = useSelector((state) => state.cart);
+  const itemName = useSelector((state) => state.cart.name);
+  const orderTotal = useSelector((state) => state.cart.cost);
 
   //for reference
   //app.use('/api/order', orderRouter);
@@ -41,8 +41,8 @@ function checkout() {
           <th>Name</th>
           <th>Cost</th>
         </tr>
-        <tr>useSelector Pizza</tr>
-        <tr>useSelector Cost</tr>
+        <tr>{itemName}</tr>
+        <tr>{orderTotal}</tr>
       </table>
       <div>
         <p>Total: Numbers</p> <hr />
