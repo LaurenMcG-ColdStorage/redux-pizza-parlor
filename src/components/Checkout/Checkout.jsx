@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -37,12 +36,18 @@ function checkout() {
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Cost</th>
-        </tr>
-        <tr>{itemName}</tr>
-        <tr>{orderTotal}</tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{itemName}</td>
+            <td>{orderTotal}</td>
+          </tr>
+        </tbody>
       </table>
       <div>
         <p>Total: Numbers</p> <hr />
