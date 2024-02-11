@@ -4,29 +4,19 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function checkout() {
-  const personInfo = useSelector((state) => state.customer);
-  const itemInfo = useSelector((state) => state.cart);
   const history = useHistory();
+
+  const customerName = useSelector((state) => state.customer.name);
+  const customerAddress = useSelector((state) => state.customer.address);
+  const customerCity = useSelector((state) => state.customer.city);
+  const customerZip = useSelector((state) => state.customer.zip);
+  const orderType = useSelector((state) => state.cart);
+  const orderTotal = useSelector((state) => state.cart);
 
   //for reference
   //app.use('/api/order', orderRouter);
   // const orderInsertResults = await client.query(`INSERT INTO "orders" ("customer_name", "street_address", "city", "zip", "type", "total")
   // VALUES ($1, $2, $3, $4, $5, $6)
-
-  //Store info
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [zip, setZip] = useState('');
-  const [orderType, setOrderType] = useState('');
-  const [total, setTotal] = useState(0);
-
-  setName(personInfo.name);
-  setAddress(personInfo.address);
-  setCity(personInfo.city);
-  setZip(personInfo.zip);
-  setOrderType('');
-  setTotal('');
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
@@ -37,10 +27,10 @@ function checkout() {
     <div>
       <div>
         <p>
-          {name} <hr />
-          {address} <hr />
-          {city} <hr />
-          {zip}
+          {customerName} <br />
+          {customerAddress} <br />
+          {customerCity} <br />
+          {customerZip}
         </p>
       </div>
       <div>
