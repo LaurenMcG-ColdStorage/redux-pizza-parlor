@@ -1,22 +1,35 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function checkout() {
-  const personInfo = useSelector((state) => state.customer);
-  const itemInfo = useSelector((state) => state.cart);
+  const history = useHistory();
+
+  const customerName = useSelector((state) => state.customer.name);
+  const customerAddress = useSelector((state) => state.customer.address);
+  const customerCity = useSelector((state) => state.customer.city);
+  const customerZip = useSelector((state) => state.customer.zip);
+  const itemName = useSelector((state) => state.cart.name);
+  const orderTotal = useSelector((state) => state.cart.cost);
+
+  //for reference
+  //app.use('/api/order', orderRouter);
+  // const orderInsertResults = await client.query(`INSERT INTO "orders" ("customer_name", "street_address", "city", "zip", "type", "total")
+  // VALUES ($1, $2, $3, $4, $5, $6)
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
+    history.push('/pizzaList');
   };
 
   return (
     <div>
       <div>
         <p>
-          Person name <br />
-          Person address <br />
-          Person city <br />
+          {customerName} <br />
+          {customerAddress} <br />
+          {customerCity} <br />
+          {customerZip}
         </p>
       </div>
       <div>
@@ -31,8 +44,8 @@ function checkout() {
         </thead>
         <tbody>
           <tr>
-            <td>useSelector Pizza</td>
-            <td>useSelector Cost</td>
+            <td>{itemName}</td>
+            <td>{orderTotal}</td>
           </tr>
         </tbody>
       </table>
