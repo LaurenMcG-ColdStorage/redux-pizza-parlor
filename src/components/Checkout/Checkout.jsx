@@ -6,12 +6,14 @@ import axios from 'axios';
 function checkout() {
   const history = useHistory();
 
+
   const [total, setTotal] = useState();
 
   const customerDetails = useSelector((state) => state.customer);
   const orderDetails = useSelector((state) => state.cart);
   //const itemName = useSelector((state) => state.cart.name);
   //const orderTotal = useSelector((state) => state.cart.cost);
+
 
   //for reference
   //app.use('/api/order', orderRouter);
@@ -37,6 +39,7 @@ function checkout() {
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
+
         <thead>
           <tr>
             <th>Name</th>
@@ -53,7 +56,7 @@ function checkout() {
               </tr>
             </>;
           })}
-        </tbody>
+        </tbody>      
       </table>
       <div>
         <p>Total: {total}</p> <hr />

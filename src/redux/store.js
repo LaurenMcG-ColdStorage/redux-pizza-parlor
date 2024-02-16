@@ -3,14 +3,14 @@ import logger from 'redux-logger';
 
 // Be sure to replace this reducer! 🙂        -- Changes made
 const cart = (state = [], action) => {
-  if(action.type === 'ADDINGTOCART') {
+  if (action.type === 'ADDINGTOCART') {
     return [...state, action.payload];
   }
   return state;
 };
 
-const customer = (state = {}, action) => {
-  if (action.type ==='ADD_CUSTOMER'){
+const customer = (state = [], action) => {
+  if (action.type === 'ADD_CUSTOMER') {
     return action.payload;
   }
   return state;
@@ -19,10 +19,9 @@ const customer = (state = {}, action) => {
 const store = createStore(
   combineReducers({
     cart, // 👈 Be sure to replace this, too! -- Replaced
-    customer
+    customer,
   }),
-  applyMiddleware(logger),
+  applyMiddleware(logger)
 );
-
 
 export default store;
