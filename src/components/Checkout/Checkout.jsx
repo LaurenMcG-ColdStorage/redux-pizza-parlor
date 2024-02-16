@@ -57,7 +57,7 @@ function checkout() {
       </table>
       <div>
         <p>Total: {total}</p> <hr />
-        <button>CHECKOUT</button>
+        <button onClick={checkoutSubmit}>CHECKOUT</button>
       </div>
     </div>
   );
