@@ -20,7 +20,7 @@ function checkout() {
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
-    history.push('/pizzaList');
+    history.push('/selectpizza');
   };
 
   return (
