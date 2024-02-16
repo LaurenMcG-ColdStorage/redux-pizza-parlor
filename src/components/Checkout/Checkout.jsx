@@ -6,14 +6,12 @@ import axios from 'axios';
 function checkout() {
   const history = useHistory();
 
-
   const [total, setTotal] = useState();
 
   const customerDetails = useSelector((state) => state.customer);
   const orderDetails = useSelector((state) => state.cart);
   //const itemName = useSelector((state) => state.cart.name);
   //const orderTotal = useSelector((state) => state.cart.cost);
-
 
   //for reference
   //app.use('/api/order', orderRouter);
@@ -22,7 +20,7 @@ function checkout() {
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
-    history.push('/pizzaList');
+    history.push('/selectpizza');
   };
 
   return (
@@ -39,7 +37,6 @@ function checkout() {
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
-
         <thead>
           <tr>
             <th>Name</th>
@@ -48,15 +45,16 @@ function checkout() {
         </thead>
         <tbody>
           {orderDetails.map((item, i) => {
-            <>
-              {setTotal(total + item.price)}
-              <tr key={i}>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
-              </tr>
-            </>;
+            return (
+              <>
+                <tr key={i}>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                </tr>
+              </>
+            );
           })}
-        </tbody>      
+        </tbody>
       </table>
       <div>
         <p>Total: {total}</p> <hr />
