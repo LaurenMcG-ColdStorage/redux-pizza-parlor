@@ -1,15 +1,19 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function checkout() {
   const history = useHistory();
 
-  const customerName = useSelector((state) => state.customer.name);
-  const customerAddress = useSelector((state) => state.customer.address);
-  const customerCity = useSelector((state) => state.customer.city);
-  const customerZip = useSelector((state) => state.customer.zip);
+
+  const [total, setTotal] = useState();
+
+  const customerDetails = useSelector((state) => state.customer);
   const orderDetails = useSelector((state) => state.cart);
+  //const itemName = useSelector((state) => state.cart.name);
+  //const orderTotal = useSelector((state) => state.cart.cost);
+
 
   //for reference
   //app.use('/api/order', orderRouter);
@@ -25,29 +29,38 @@ function checkout() {
     <div>
       <div>
         <p>
-          {customerName} <br />
-          {customerAddress} <br />
-          {customerCity} <br />
-          {customerZip}
+          {customerDetails.name} <br />
+          {customerDetails.address} <br />
+          {customerDetails.city} <br />
+          {customerDetails.zip}
         </p>
       </div>
       <div>
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Cost</th>
-        </tr>
-        <tr>
-          {orderDetails.map((item) => {
-            <td>{item}</td>;
+
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orderDetails.map((item, i) => {
+            <>
+              {setTotal(total + item.price)}
+              <tr key={i}>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+              </tr>
+            </>;
           })}
-        </tr>
+        </tbody>      
       </table>
       <div>
-        <p>Total: Numbers</p> <hr />
-        <button>CHECKOUT</button>
+        <p>Total: {total}</p> <hr />
+        <button onClick={checkoutSubmit}>CHECKOUT</button>
       </div>
     </div>
   );
