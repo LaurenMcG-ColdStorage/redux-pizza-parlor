@@ -9,8 +9,7 @@ function checkout() {
   const customerAddress = useSelector((state) => state.customer.address);
   const customerCity = useSelector((state) => state.customer.city);
   const customerZip = useSelector((state) => state.customer.zip);
-  const itemName = useSelector((state) => state.cart.name);
-  const orderTotal = useSelector((state) => state.cart.cost);
+  const orderDetails = useSelector((state) => state.cart);
 
   //for reference
   //app.use('/api/order', orderRouter);
@@ -36,18 +35,15 @@ function checkout() {
         <p>Type: Pickup/Delivery</p>
       </div>
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{itemName}</td>
-            <td>{orderTotal}</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Name</th>
+          <th>Cost</th>
+        </tr>
+        <tr>
+          {orderDetails.map((item) => {
+            <td>{item}</td>;
+          })}
+        </tr>
       </table>
       <div>
         <p>Total: Numbers</p> <hr />
