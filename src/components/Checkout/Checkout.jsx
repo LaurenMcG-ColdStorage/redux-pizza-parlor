@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function checkout() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [total, setTotal] = useState(0);
   const customerDetails = useSelector((state) => state.customer);
@@ -21,11 +22,41 @@ function checkout() {
       (prev, current) => prev + parseFloat(current.price),
       0
     );
-    setTotal(sum);
+    setTotal(sum.toFixed(2));
   }, [orderDetails]);
+
+  console.log('ORDER DETAILS', orderDetails);
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
+    const pizzas = orderDetails.map((item, i) => {
+      return {
+        id: i + 1,
+        quantity: 1,
+      };
+    });
+
+    const newOrder = {
+      customer_name: customerDetails.name,
+      street_address: customerDetails.address,
+      city: customerDetails.city,
+      zip: customerDetails.zip,
+      type: customerDetails.type,
+      total: total,
+      pizzas,
+    };
+
+    console.log('THIS IS THE NEW ORDER OBJECT', newOrder);
+
+    axios
+      .post('/api/order', newOrder)
+      .then((response) => {
+        dispatch({ type: 'ORDER_PLACED' });
+      })
+      .catch((error) => {
+        console.log('ERROR IN POST:', error);
+      });
+
     history.push('/selectpizza');
   };
 
@@ -40,7 +71,7 @@ function checkout() {
         </p>
       </div>
       <div>
-        <p>Type: Pickup/Delivery</p>
+        <p>Type: {customerDetails.type}</p>
       </div>
       <table>
         <thead>
