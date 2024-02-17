@@ -21,7 +21,7 @@ function checkout() {
       (prev, current) => prev + parseFloat(current.price),
       0
     );
-    setTotal(sum);
+    setTotal(sum.toFixed(2));
   }, [orderDetails]);
 
   const checkoutSubmit = () => {
