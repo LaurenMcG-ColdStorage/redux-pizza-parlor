@@ -9,12 +9,18 @@ const cart = (state = [], action) => {
   if (action.type === 'REMOVEFROMCART') {
     return [state.filter((state) => !action.payload)];
   }
+  if (action.type === 'ORDER_PLACED') {
+    return (state = []);
+  }
   return state;
 };
 
 const customer = (state = [], action) => {
   if (action.type === 'ADD_CUSTOMER') {
     return action.payload;
+  }
+  if (action.type === 'ORDER_PLACED') {
+    return (state = []);
   }
   return state;
 };
