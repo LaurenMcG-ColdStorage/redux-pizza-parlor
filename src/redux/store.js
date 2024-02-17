@@ -6,6 +6,9 @@ const cart = (state = [], action) => {
   if (action.type === 'ADDINGTOCART') {
     return [...state, action.payload];
   }
+  if (action.type === 'REMOVEFROMCART') {
+    return [state.filter((state) => !action.payload)];
+  }
   return state;
 };
 
