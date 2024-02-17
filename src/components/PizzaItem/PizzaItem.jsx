@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function PizzaItem({ pizza }) {
@@ -7,6 +8,9 @@ function PizzaItem({ pizza }) {
     //Make Pizza List Global not local.
     //const pizzaList = useSelector((store) => store.pizzaList);
     const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cart);
+
+    const [togglepizza, settogglepizza] = useState(false)
 
     const handleCartButton = (event) => {
         event.preventDefault();
@@ -18,8 +22,21 @@ function PizzaItem({ pizza }) {
                 name: pizza.name,
                 price: pizza.price
             }});
+        settogglepizza(true)
     }
 
+    const handleRemoveButton = (event) => {
+        event.preventDefault();
+        console.log(`Pizza Item to Remove`, {pizza})
+
+        dispatch({
+            type: 'REMOVEFROMCART',
+            payload: {
+                name: pizza.name,
+                price: pizza.price
+            }});
+    }
+    
     return (
         <ul>
             {/* MAP */}
@@ -34,7 +51,13 @@ function PizzaItem({ pizza }) {
                     <li>
                         {pizza.price}
                     </li>
-                    <button onClick={handleCartButton}>Add to Cart</button>
+                    <div id="pizzacartbutton" onClick={() => settogglepizza(!togglepizza)}>
+                        {togglepizza ? (
+                        <button onClick={handleRemoveButton}>Remove from Cart</button>
+                        ) : (
+                        <button onClick={handleCartButton}>Add to Cart</button>
+                        )}
+                    </div>
                 </ul>
             </div>
         </ul>
