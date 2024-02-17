@@ -29,10 +29,10 @@ function CustomerInfo(){
     return(
         <>
             <h2>Step Two: Customer Information</h2>
-            <input type='text' placeholder="name" onChange={setName} required></input><br />
-            <input type='text' placeholder="street address" onChange={setAddress} required></input><br />
-            <input type='text' placeholder="city" onChange={setCity} required></input><br />
-            <input type='number' placeholder="ZIP" onChange={setZip} required></input><br />
+            <input type='text' placeholder="name" onChange={(event) => setName(event.target.value)} required></input><br />
+            <input type='text' placeholder="street address" onChange={(event) => setAddress(event.target.value)} required></input><br />
+            <input type='text' placeholder="city" onChange={(event) => setCity(event.target.value)} required></input><br />
+            <input type='number' placeholder="ZIP" onChange={(event) => setZip(event.target.value)} required></input><br />
             <input type='radio' name='servedType' id='pickup 'value='pickup'></input>
             <label for='pickup'>Pick Up</label><br />
             <input type='radio' name='servedType' value='delivery'></input>
