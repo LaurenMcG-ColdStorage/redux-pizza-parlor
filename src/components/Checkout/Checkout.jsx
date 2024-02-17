@@ -40,7 +40,7 @@ function checkout() {
         </p>
       </div>
       <div>
-        <p>Type: Pickup/Delivery</p>
+        <p>Type: {customerDetails.type}</p>
       </div>
       <table>
         <thead>
