@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function checkout() {
   const history = useHistory();
-
-  const [total, setTotal] = useState();
-
+  const [total, setTotal] = useState(0);
   const customerDetails = useSelector((state) => state.customer);
   const orderDetails = useSelector((state) => state.cart);
   //const itemName = useSelector((state) => state.cart.name);
@@ -17,6 +15,14 @@ function checkout() {
   //app.use('/api/order', orderRouter);
   // const orderInsertResults = await client.query(`INSERT INTO "orders" ("customer_name", "street_address", "city", "zip", "type", "total")
   // VALUES ($1, $2, $3, $4, $5, $6)
+
+  useEffect(() => {
+    const sum = orderDetails.reduce(
+      (prev, current) => prev + parseFloat(current.price),
+      0
+    );
+    setTotal(sum);
+  }, [orderDetails]);
 
   const checkoutSubmit = () => {
     //Do some stuff here then put on checkout button
