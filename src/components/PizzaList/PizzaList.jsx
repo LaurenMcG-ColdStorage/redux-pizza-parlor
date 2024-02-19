@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import PizzaItem from '../PizzaItem/PizzaItem';
 
 function PizzaList() {
     const [PizzaLists, setPizzaLists] = useState([]);
+    const history = useHistory();
 
     //Make Pizza List Global not local.
     //const pizzaList = useSelector((store) => store.pizzaList);
@@ -28,13 +30,18 @@ function PizzaList() {
           console.error('ERROR:', err);
         });
     };
+
+    function nextPage(){
+      history.push('/custinfo');
+    }
       //initial load of the components
     useEffect(() => {
         //body of effect
     console.log('initial load');
         //api call
         refreshPizza();
-    }, []);    
+    }, []); 
+
     return (
         <div>
           <header>
@@ -46,6 +53,7 @@ function PizzaList() {
               return <PizzaItem key={pizza.id} pizza={pizza}/>
             })
           }
+          <button onClick={nextPage}>Next Step</button>
         </div>
     )
 }

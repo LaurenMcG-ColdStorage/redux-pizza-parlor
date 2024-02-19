@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
 import {
   HashRouter as Router,
@@ -9,6 +8,7 @@ import {
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import PizzaList from '../PizzaList/PizzaList';
 import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/Admin';
 
 function App() {
   return (
@@ -28,6 +28,9 @@ function App() {
         </Route>
         <Route path="/checkout">
           <Checkout />
+        </Route>
+        <Route path='/admin'>
+          <Admin />
         </Route>
       </Router>
     </div>
