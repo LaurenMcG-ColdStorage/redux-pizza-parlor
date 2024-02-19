@@ -1,4 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
+import React from 'react';
+import AdminItem from '../AdminItem/AdminItem';
 
 function Admin(){
 
@@ -28,14 +30,9 @@ function Admin(){
                     </tr>
                 </thead>
                 <tbody>
-                    {orderData.map(order => {
+                    {orderData.map((order) => {
                         return (
-                            <tr key={order.id}>
-                                <td>{order.customer_name}</td>
-                                <td>{order.time}</td>
-                                <td>{order.type}</td>
-                                <td>{order.total}</td>
-                            </tr>
+                            <AdminItem order={order} />
                         );
                     })}
                 </tbody>
