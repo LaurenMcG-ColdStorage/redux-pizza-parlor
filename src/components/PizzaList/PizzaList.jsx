@@ -42,6 +42,11 @@ function PizzaList() {
         refreshPizza();
     }, []); 
 
+    const handleNextPage = (event) => {
+      event.preventDefault();
+      history.push('/checkout')
+    }
+
     return (
         <div>
           <header>
@@ -53,7 +58,7 @@ function PizzaList() {
               return <PizzaItem key={pizza.id} pizza={pizza}/>
             })
           }
-          <button onClick={nextPage}>Next Step</button>
+          <button onClick={handleNextPage}>Next Step</button>
         </div>
     )
 }
