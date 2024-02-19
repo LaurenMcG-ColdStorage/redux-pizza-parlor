@@ -1,22 +1,29 @@
 import axios from 'axios';
 import React from 'react';
 import AdminItem from '../AdminItem/AdminItem';
+import { useState, useEffect } from 'react';
 
 function Admin(){
 
-    let orderData = [];
+    const [orderData, setOrderData] = useState([]);
 
-    axios({
-        method: 'GET',
-        url: '/api/order'
-    })
-        .then((response) => {
-            orderData = response.data;
-            console.log('Order Data ', orderData);
+    function getOrders(){
+        axios({
+            method: 'GET',
+            url: '/api/order'
         })
-        .catch((error) => {
-            console.log('Error: ', error)
-        });
+            .then((response) => {
+                setOrderData(response.data)
+                console.log('Order Data ', orderData);
+            })
+            .catch((error) => {
+                console.log('Error: ', error)
+            });
+    };
+
+    useEffect(() => {
+        getOrders();
+    }, [])
 
     return(
         <>
