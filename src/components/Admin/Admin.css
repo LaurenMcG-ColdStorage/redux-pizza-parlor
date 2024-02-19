@@ -1,0 +1,9 @@
+.tableStyling{
+    width: 90%;
+    margin: auto;
+    max-width: 900px;
+    text-align: center;
+    color: gainsboro;
+    border-color: darkgoldenrod;
+    background-color: #003e70;
+}

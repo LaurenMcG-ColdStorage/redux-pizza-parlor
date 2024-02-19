@@ -3,6 +3,8 @@ import React from 'react';
 import AdminItem from '../AdminItem/AdminItem';
 import { useState, useEffect } from 'react';
 
+import './Admin.css'
+
 function Admin(){
 
     const [orderData, setOrderData] = useState([]);
@@ -27,7 +29,7 @@ function Admin(){
 
     return(
         <>
-            <table>
+            <table className='tableStyling'>
                 <thead>
                     <tr>
                         <td>Name</td>
