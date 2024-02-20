@@ -2,6 +2,11 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
 
 import PizzaItem from '../PizzaItem/PizzaItem';
 
@@ -49,11 +54,19 @@ function PizzaList() {
           </header>
 
           <h4>SELECT YOUR PIZZA:</h4>
-          {PizzaLists.map((pizza) => {
-              return <PizzaItem key={pizza.id} pizza={pizza}/>
-            })
-          }
-          <button onClick={nextPage}>Next Step</button>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              {PizzaLists.map((pizza) => {
+                  return <Grid item xs={3}> <PizzaItem key={pizza.id} pizza={pizza}/> </Grid>
+                })
+              }
+            </Grid>
+          </Box>
+          <div>
+            <Stack direction="row" spacing={2}>
+              <Button variant="contained" endIcon={<SendIcon/>} onClick={nextPage}>Next Step</Button>
+            </Stack>
+          </div>
         </div>
     )
 }

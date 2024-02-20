@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 
 function PizzaItem({ pizza }) {
     //const [PizzaLists, setPizzaLists] = useState([]);
@@ -38,31 +39,32 @@ function PizzaItem({ pizza }) {
     }
     
     return (
-        <ul>
-            {/* MAP */}
-            <div>
-                <ul>
-                    <li>
-                        {pizza.name}
-                    </li>
-                    <li>
-                        {pizza.description}
-                    </li>
-                    <li>
-                        {pizza.price}
-                    </li>
-                    <div id="pizzacartbutton" onClick={() => settogglepizza(!togglepizza)}>
-                        {togglepizza ? (
-                        <button onClick={handleRemoveButton}>Remove from Cart</button>
-                        ) : (
-                        <button onClick={handleCartButton}>Add to Cart</button>
-                        )}
-                    </div>
-                </ul>
+        <div>
+            <div id="pizzacartbutton" onClick={() => settogglepizza(!togglepizza)}>
+                <p>{pizza.name}</p>
+                <p>{pizza.description}</p>
+                <p>{pizza.price} </p>
+                {togglepizza ? (
+                <button onClick={handleRemoveButton}>Remove from Cart</button>
+                ) : (
+                <button onClick={handleCartButton}>Add to Cart</button>
+                )} 
             </div>
-        </ul>
 
+        </div>
     );
 }
 
 export default PizzaItem;
+
+{/* <Grid container spacing={2}>
+<Grid item onClick={() => settogglepizza(!togglepizza)}>
+    <p>{pizza.name}</p>
+    <p>{pizza.price} </p>
+        {togglepizza ? (
+        <button onClick={handleRemoveButton}>Remove from Cart</button>
+        ) : (
+        <button onClick={handleCartButton}>Add to Cart</button>
+        )}
+</Grid>
+</Grid> */}
